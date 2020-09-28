@@ -24,37 +24,59 @@ export default class MiniSlider extends Slider {
         }
     }
 
+    // nextSlide() {
+    //     if (this.slides[0].tagName == "BUTTON" && this.slides[1].tagName == "BUTTON") {
+    //         this.container.appendChild(this.slides[0]); // Slide
+    //         this.container.appendChild(this.slides[1]); // Btn
+    //         this.container.appendChild(this.slides[2]); // Btn
+    //         this.decorizeSlides();
+    //     } else if (this.slides[0].tagName == "BUTTON") {
+    //         this.container.appendChild(this.slides[0]); // Slide
+    //         this.container.appendChild(this.slides[1]); // Btn
+    //         this.decorizeSlides();
+    //     } else {
+    //         this.container.appendChild(this.slides[0]);
+    //         this.decorizeSlides();
+    //     }
+    // }
+
+    // bindTriggers() {
+    //     this.next.addEventListener('click', () => this.nextSlide());
+
+    //     this.prev.addEventListener('click', () => {
+    //         for (let i = this.slides.length - 1; i > 0; i--) {
+    //             if (this.slides[i].tagName !== "BUTTON") {
+    //                 let active = this.slides[i];
+    //                 this.container.insertBefore(active, this.slides[0]);
+    //                 this.decorizeSlides();
+    //                 break;
+    //             }
+    //         }
+    //     });
+    // }
+
+    moveButtonsToEnd() {
+        this.slides.forEach((slide) => {
+            if (slide.tagName === "BUTTON") {
+                this.container.appendChild(slide);
+            }
+        });
+    }
+
     nextSlide() {
-        if (this.slides[1].tagName == "BUTTON" && this.slides[2].tagName == "BUTTON") {
-            this.container.appendChild(this.slides[0]); // Slide
-            this.container.appendChild(this.slides[1]); // Btn
-            this.container.appendChild(this.slides[2]); // Btn
-            this.decorizeSlides();
-        } else if (this.slides[1].tagName == "BUTTON") {
-            this.container.appendChild(this.slides[0]); // Slide
-            this.container.appendChild(this.slides[1]); // Btn
-            this.decorizeSlides();
-        } else {
-            this.container.appendChild(this.slides[0]);
-            this.decorizeSlides();
-        }
+        this.container.appendChild(this.slides[0]);
+        this.decorizeSlides();
+        this.moveButtonsToEnd();
     }
 
     bindTriggers() {
         this.next.addEventListener('click', () => this.nextSlide());
 
         this.prev.addEventListener('click', () => {
-
-            for (let i = this.slides.length - 1; i > 0; i--) {
-                if (this.slides[i].tagName !== "BUTTON") {
-                    let active = this.slides[i];
-                    this.container.insertBefore(active, this.slides[0]);
-                    this.decorizeSlides();
-                    break;
-                }
-            }
-
-
+            let active = this.slides[0];
+            this.container.insertBefore(active, this.slides[this.slides.length - 1]);
+            this.decorizeSlides();
+            this.moveButtonsToEnd();
         });
     }
 
