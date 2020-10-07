@@ -5086,12 +5086,14 @@ function () {
   function Difference(oldOfficer, newOffocer, items) {
     _classCallCheck(this, Difference);
 
-    this.oldOfficer = document.querySelector(oldOfficer);
-    this.newOfficer = document.querySelector(newOffocer);
-    this.oldItems = this.oldOfficer.querySelectorAll(items);
-    this.newItems = this.newOfficer.querySelectorAll(items);
-    this.oldCounter = 0;
-    this.newCounter = 0;
+    try {
+      this.oldOfficer = document.querySelector(oldOfficer);
+      this.newOfficer = document.querySelector(newOffocer);
+      this.oldItems = this.oldOfficer.querySelectorAll(items);
+      this.newItems = this.newOfficer.querySelectorAll(items);
+      this.oldCounter = 0;
+      this.newCounter = 0;
+    } catch (e) {}
   }
 
   _createClass(Difference, [{
@@ -5133,10 +5135,12 @@ function () {
   }, {
     key: "init",
     value: function init() {
-      this.hideItems(this.oldItems);
-      this.hideItems(this.newItems);
-      this.bindTriggers(this.oldOfficer, this.oldItems, this.oldCounter);
-      this.bindTriggers(this.newOfficer, this.newItems, this.newCounter);
+      try {
+        this.hideItems(this.oldItems);
+        this.hideItems(this.newItems);
+        this.bindTriggers(this.oldOfficer, this.oldItems, this.oldCounter);
+        this.bindTriggers(this.newOfficer, this.newItems, this.newCounter);
+      } catch (e) {}
     }
   }]);
 
@@ -5322,7 +5326,7 @@ function () {
 
             setTimeout(function () {
               statusMessage.remove();
-            }, 6000);
+            }, 5000);
           });
         });
       });
@@ -5551,23 +5555,25 @@ function (_Slider) {
       var _this2 = this;
 
       try {
-        this.hanson = document.querySelector('.hanson');
-      } catch (e) {
-        console.log(e);
-      }
+        try {
+          this.hanson = document.querySelector('.hanson');
+        } catch (e) {
+          console.log(e);
+        }
 
-      this.btns.forEach(function (item) {
-        item.addEventListener('click', function () {
-          _this2.plusSlides(1);
-        });
-        item.parentNode.previousElementSibling.addEventListener('click', function (e) {
-          e.preventDefault();
-          _this2.slideIndex = 1;
+        this.btns.forEach(function (item) {
+          item.addEventListener('click', function () {
+            _this2.plusSlides(1);
+          });
+          item.parentNode.previousElementSibling.addEventListener('click', function (e) {
+            e.preventDefault();
+            _this2.slideIndex = 1;
 
-          _this2.showSlides(_this2.slideIndex);
+            _this2.showSlides(_this2.slideIndex);
+          });
         });
-      });
-      this.showSlides(this.slideIndex);
+        this.showSlides(this.slideIndex);
+      } catch (e) {}
     }
   }]);
 
@@ -5740,15 +5746,17 @@ function (_Slider) {
     value: function init() {
       var _this4 = this;
 
-      this.container.style.cssText = "\n            display: flex;\n            flex-wrap: wrap;\n            overflow: hidden;\n            align-items: flex-start;\n        ";
-      this.bindTriggers();
-      this.decorizeSlides();
+      try {
+        this.container.style.cssText = "\n                display: flex;\n                flex-wrap: wrap;\n                overflow: hidden;\n                align-items: flex-start;\n            ";
+        this.bindTriggers();
+        this.decorizeSlides();
 
-      if (this.autoplay) {
-        setInterval(function () {
-          return _this4.nextSlide();
-        }, 5000);
-      }
+        if (this.autoplay) {
+          setInterval(function () {
+            return _this4.nextSlide();
+          }, 5000);
+        }
+      } catch (e) {}
     }
   }]);
 
@@ -5789,7 +5797,12 @@ var Slider = function Slider() {
   _classCallCheck(this, Slider);
 
   this.container = document.querySelector(container);
-  this.slides = this.container.children;
+
+  try {
+    this.slides = this.container.children;
+  } catch (error) {}
+
+  ;
   this.btns = document.querySelectorAll(btns);
   this.prev = document.querySelector(prev);
   this.next = document.querySelector(next);
