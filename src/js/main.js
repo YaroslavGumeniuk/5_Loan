@@ -5,6 +5,7 @@ import Difference from './modules/difference';
 import Form from './modules/form';
 import ShowInfo from './modules/showInfo';
 import Download from './modules/download';
+import MyInfo from './modules/myInfo';
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({ btns: '.next', container: '.page' });
@@ -47,4 +48,5 @@ window.addEventListener('DOMContentLoaded', () => {
     new Form('.form').init();
     new ShowInfo('.plus .plus__content', '.module__info .msg').init();
     new Download('.download').init();
+    new MyInfo().init();
 });

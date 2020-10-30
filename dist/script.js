@@ -5081,6 +5081,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/form */ "./src/js/modules/form.js");
 /* harmony import */ var _modules_showInfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/showInfo */ "./src/js/modules/showInfo.js");
 /* harmony import */ var _modules_download__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/download */ "./src/js/modules/download.js");
+/* harmony import */ var _modules_myInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/myInfo */ "./src/js/modules/myInfo.js");
+
 
 
 
@@ -5131,6 +5133,7 @@ window.addEventListener('DOMContentLoaded', function () {
   new _modules_form__WEBPACK_IMPORTED_MODULE_4__["default"]('.form').init();
   new _modules_showInfo__WEBPACK_IMPORTED_MODULE_5__["default"]('.plus .plus__content', '.module__info .msg').init();
   new _modules_download__WEBPACK_IMPORTED_MODULE_6__["default"]('.download').init();
+  new _modules_myInfo__WEBPACK_IMPORTED_MODULE_7__["default"]().init();
 });
 
 /***/ }),
@@ -5473,6 +5476,79 @@ function () {
   }]);
 
   return Form;
+}();
+
+
+
+/***/ }),
+
+/***/ "./src/js/modules/myInfo.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/myInfo.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MyInfo; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var MyInfo =
+/*#__PURE__*/
+function () {
+  function MyInfo(btn, infoBlock) {// this.btns = document.querySelectorAll(btn);
+    // this.infoBlocks = document.querySelectorAll(infoBlock);
+
+    _classCallCheck(this, MyInfo);
+  }
+
+  _createClass(MyInfo, [{
+    key: "myInfo",
+    value: function myInfo() {
+      var infoBtn = document.createElement('div');
+      var infoBlock = document.createElement('div');
+      var close = document.createElement('div');
+      infoBtn.innerHTML = "Что реализовано <br> в этом проекте?";
+      infoBlock.innerHTML = "В этом проекте на 'чистом JS' в ООП стиле реализован следующий функционал: <br><br> 1. Главный слайдер (кнопка слева внизу). <br> 2. Всплывающий блок (3-я страница). <br> 3. Видеоплеер в модальном окне (1-я страница кнопка 'WHY'). <br> 4. Создан общий прототип слайдера и реализованы слайдеры на 1-й, 3-й и 5-й странице. <br> 5. Блок 'The difference' (2-я страница). <br> 6. Форма данных (4-я и 6-я страница). <br><br> Далее - страница 'modules.html'. <br> 7. Слайдер (кнопка слева внизу, кнопки вперед - назад внизу). <br> 8. Динамический видеоплеер на странице с модулями (нижний становится доступным после окончания просмотра верхнего). <br> 9. Загрузка файлов (кнопка 'Download PDF'). <br> 10. Разворачивание контента (кнопка '+').";
+      close.innerHTML = "&times";
+      infoBtn.style.cssText = "\n                // display: none;\n                background: rgba(255, 245, 255, 0.7);\n                transition: ease-in 0.7s all;\n                width: 300px;\n                height: 100px;\n                border: 3px solid red;\n                position: absolute;\n                left: 500px;\n                top: 50px;\n                border-radius: 20px;\n                cursor: pointer;\n                font-size: 30px;\n                color: #2546bc;\n                text-align: center;\n                line-height: 46px;\n            ";
+      infoBlock.style.cssText = "\n                display: none;\n                opacity: 0;\n                padding: 15px;\n                font-size: 18px;\n                background: rgba(255, 245, 255, 0.7);\n                transition: ease-in 0.7s all;\n                width: 480px;\n                height: 510px;\n                border: 2px solid #2546bc;\n                position: absolute;\n                left: 500px;\n                top: 50px;\n                border-radius: 20px;\n            ";
+      close.style.cssText = "\n                position: absolute;\n                left: 480px;\n                top: -15px;\n                width: 50px;\n                height: 50px;\n                font-size: 60px;\n                color: red;\n                line-height: 42px;\n                text-align: center;\n                cursor: pointer;\n            ";
+      document.body.append(infoBtn);
+      document.body.append(infoBlock);
+      infoBlock.append(close);
+      infoBtn.addEventListener('click', function () {
+        infoBtn.style.display = 'none';
+        infoBtn.style.opacity = '0';
+        infoBlock.style.display = 'block';
+        setTimeout(function () {
+          infoBlock.style.opacity = '1';
+        }, 20);
+      });
+      close.addEventListener('click', function () {
+        infoBtn.style.display = 'block';
+        setTimeout(function () {
+          infoBtn.style.opacity = '1';
+        }, 20);
+        infoBlock.style.opacity = '0';
+        setTimeout(function () {
+          infoBlock.style.display = 'none';
+        }, 500);
+      });
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      this.myInfo();
+    }
+  }]);
+
+  return MyInfo;
 }();
 
 
